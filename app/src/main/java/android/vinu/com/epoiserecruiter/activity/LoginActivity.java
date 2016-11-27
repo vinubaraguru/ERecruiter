@@ -1,9 +1,12 @@
 package android.vinu.com.epoiserecruiter.activity;
 
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.util.Patterns;
 
 import android.view.View;
 import android.vinu.com.epoiserecruiter.R;
+import android.vinu.com.epoiserecruiter.model.OrganizationList;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -33,6 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         userPassword = (EditText) findViewById(R.id.user_password);
         btnLogin = (Button) findViewById(R.id.user_sign_in_button);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
+        mCoordinatorLayout=(CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
         btnLogin.setOnClickListener(this);
         btnReset.setOnClickListener(this);
@@ -80,6 +85,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(user_email.equals("support@epoise.com")&& user_password.equals("support")){
 
+            ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
+            progressDialog.setMessage("Authenticating....");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.show();
+            progressDialog.setProgress(100);
+
             lunchParentHomeScreen();
 
         }else{
@@ -89,9 +100,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void lunchParentHomeScreen() {
-        Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
 
+            Intent intent=new Intent(getApplicationContext(), OrganizationListActivity.class);
+            startActivity(intent);
     }
 
     private void userResetPassword() {

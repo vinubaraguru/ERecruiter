@@ -34,10 +34,13 @@
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login">
         </activity>
-
         <activity
             android:name=".activity.ResetPasswordActivity"
             android:label="@string/title_activity_reset_password">
+        </activity>
+        <activity
+            android:name=".activity.OrganizationListActivity"
+            android:label="@string/title_activity_organization_list">
         </activity>
     </application>
 

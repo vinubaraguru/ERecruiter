@@ -1,8 +1,13 @@
 package android.vinu.com.epoiserecruiter.activity;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
@@ -11,6 +16,7 @@ import android.view.View;
 import android.vinu.com.epoiserecruiter.R;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by ImVB9 on 11/26/2016.
@@ -20,14 +26,13 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
     private TextView resetPasswordEmail;
     private Button resetPasswordButton,backToLogin;
+    private CoordinatorLayout mCoordinatorLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
 
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -40,6 +45,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
         resetPasswordEmail =(TextView) findViewById(R.id.user_reset_email);
         resetPasswordButton =(Button) findViewById(R.id.user_reset_password_button);
         backToLogin=(Button) findViewById(R.id.login_back_button);
+
+        mCoordinatorLayout=(CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 
         resetPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +86,30 @@ public class ResetPasswordActivity extends AppCompatActivity {
     }
 
     private void sendResetPassword(String resetPasswordEmail) {
-        //sendForgotPwd process
-    }
+
+
+        if(resetPasswordEmail.equals("support@epoise.com")){
+            //reset password process begins here
+            ProgressDialog progressDialog=new ProgressDialog(ResetPasswordActivity.this);
+            progressDialog.setMessage("Authenticating....");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.show();
+            progressDialog.setProgress(50);
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            builder.setTitle("Reset Password");
+            builder.setMessage("Reset password has been sent successfully to your registered emailID")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                            Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                            startActivity(intent);
+
+                        }
+                    }).show();
+        }else{
+                Snackbar.make(mCoordinatorLayout, "Invalid email or password !", Snackbar.LENGTH_LONG).show();
+            }
+        }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
