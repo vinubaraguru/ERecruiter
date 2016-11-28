@@ -1,78 +1,111 @@
-//package android.vinu.com.epoiserecruiter.adapter;
-//
-//import android.support.v7.widget.RecyclerView;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.vinu.com.epoiserecruiter.R;
-//import android.widget.TextView;
-//
-//import android.vinu.com.epoiserecruiter.ItemFragment.OnListFragmentInteractionListener;
-//import android.vinu.com.epoiserecruiter.dummy.DummyContent.DummyItem;
-//
-//import java.util.List;
-//
-///**
-// * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
-// * specified {@link OnListFragmentInteractionListener}.
-// * TODO: Replace the implementation with code for your data type.
-// */
-//public class InviteListRecyclerViewAdapter extends RecyclerView.Adapter<InviteListRecyclerViewAdapter.ViewHolder> {
-//
-//    private final List<DummyItem> mValues;
-//    private final OnListFragmentInteractionListener mListener;
-//
-//    public InviteListRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-//        mValues = items;
-//        mListener = listener;
-//    }
-//
-//    @Override
-//    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext())
-//                .inflate(R.layout.fragment_item, parent, false);
-//        return new ViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(final ViewHolder holder, int position) {
-//        holder.mItem = mValues.get(position);
-//        holder.mIdView.setText(mValues.get(position).id);
-//        holder.mContentView.setText(mValues.get(position).content);
-//
-//        holder.mView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (null != mListener) {
-//                    // Notify the active callbacks interface (the activity, if the
-//                    // fragment is attached to one) that an item has been selected.
-//                    mListener.onListFragmentInteraction(holder.mItem);
-//                }
-//            }
-//        });
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return mValues.size();
-//    }
-//
-//    public class ViewHolder extends RecyclerView.ViewHolder {
-//        public final View mView;
-//        public final TextView mIdView;
-//        public final TextView mContentView;
-//        public DummyItem mItem;
-//
-//        public ViewHolder(View view) {
-//            super(view);
-//            mView = view;
-//            mIdView = (TextView) view.findViewById(R.id.id);
-//            mContentView = (TextView) view.findViewById(R.id.content);
-//        }
-//
+package android.vinu.com.epoiserecruiter.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.vinu.com.epoiserecruiter.R;
+import android.vinu.com.epoiserecruiter.activity.OrganizationListActivity;
+import android.vinu.com.epoiserecruiter.helper.ItemClickListener;
+import android.vinu.com.epoiserecruiter.model.InviteOppList;
+import android.vinu.com.epoiserecruiter.model.OrganizationList;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
+
+public class InviteListRecyclerViewAdapter extends RecyclerView.Adapter<InviteListRecyclerViewAdapter.ViewHolder> {
+
+    Context mContext;
+    ArrayList<InviteOppList> mInviteOppListArrayList;
+
+    public InviteListRecyclerViewAdapter(Context context, ArrayList<InviteOppList> inviteOppListArrayList) {
+        mContext = context;
+        mInviteOppListArrayList = inviteOppListArrayList;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.fragment_invite_opp_list,null);
+
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+
+        InviteOppList inviteOppList=mInviteOppListArrayList.get(position);
+
+        holder.inviteOppTitle.setText(inviteOppList.getOppTitle());
+        holder.inviteOppPublishedDate.setText(inviteOppList.getOppPublishedDate());
+
+        Picasso.with(holder.itemView.getContext())
+                .load(R.drawable.messi)
+                .into(holder.inviteOppImage);
+
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int Position) {
+
+                InviteOppList inviteOppList=mInviteOppListArrayList.get(Position);
+
+                InviteOppList selectedInviteOppList= getselectedInviteOppList(Position);
+
+                Intent intent=new Intent(mContext, OrganizationListActivity.class);
+
+                mContext.startActivity(intent);
+
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return mInviteOppListArrayList.size();
+    }
+
+    public InviteOppList getselectedInviteOppList(int position) {
+        return mInviteOppListArrayList.get(position);
+    }
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+        public final TextView inviteOppTitle;
+        public final TextView inviteOppPublishedDate;
+        public final ImageView inviteOppImage;
+
+        private ItemClickListener mItemClickListener;
+
+        public ViewHolder(View view) {
+            super(view);
+
+            inviteOppTitle = (TextView) view.findViewById(R.id.opp_title);
+            inviteOppPublishedDate = (TextView) view.findViewById(R.id.opp_published_date);
+            inviteOppImage=(ImageView) view.findViewById(R.id.opp_image);
+
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            mItemClickListener.onItemClick(view,getLayoutPosition());
+        }
+
+        public void setItemClickListener(ItemClickListener itemClickListener){
+            this.mItemClickListener=itemClickListener;
+        }
+
+
 //        @Override
 //        public String toString() {
-//            return super.toString() + " '" + mContentView.getText() + "'";
+//            return super.toString() + " '" + mContext.getText() + "'";
 //        }
-//    }
-//}
+    }
+}

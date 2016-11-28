@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.vinu.com.epoiserecruiter.R;
 import android.vinu.com.epoiserecruiter.fragment.DashBoardFragment;
+import android.vinu.com.epoiserecruiter.fragment.InviteListFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -100,48 +101,48 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_dashboard) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.dash_board);
 
         } else if (id == R.id.nav_invites) {
-            fragment = new DashBoardFragment();
-            title = getString(R.string.action_settings);
+            fragment = new InviteListFragment();
+            title = getString(R.string.invites);
 
         } else if (id == R.id.nav_hiring) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.hiring);
 
         } else if (id == R.id.nav_training) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.training);
 
         } else if (id == R.id.nav_my_organization) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.my_organization);
 
         } else if (id == R.id.nav_manage_users) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.manage_users);
 
         }else if (id == R.id.nav_vendor_report) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.vendor_report);
 
         } else if (id == R.id.nav_evaluators_report) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.evaluators_report);
 
         } else if (id == R.id.nav_candidates_report) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.candidiate_report);
 
         } else if (id == R.id.nav_position_based_report) {
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.position_based_report);
 
         } else if (id == R.id.nav_settings) {
 
             fragment = new DashBoardFragment();
-            title = getString(R.string.app_name);
+            title = getString(R.string.settings);
 
         }
 //        else if (id == R.id.logout) {

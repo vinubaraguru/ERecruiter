@@ -47,5 +47,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dash_board">Dashboard</string>
+    <string name="invites">Invites</string>
+    <string name="hiring">Hiring</string>
+    <string name="training">Training</string>
+    <string name="my_organization">My organization</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="vendor_report">Vendor Reports</string>
+    <string name="evaluators_report">Evaluators Report</string>
+    <string name="candidiate_report">Candidates Report</string>
+    <string name="position_based_report">Positions Based Report</string>
+    <string name="settings">Settings</string>
 
 </resources>
