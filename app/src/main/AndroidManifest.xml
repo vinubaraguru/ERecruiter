@@ -42,6 +42,8 @@
             android:name=".activity.OrganizationListActivity"
             android:label="@string/title_activity_organization_list">
         </activity>
+
+        <activity android:name=".activity.InviteOppDetailActivity"/>
     </application>
 
 </manifest>

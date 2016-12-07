@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.vinu.com.epoiserecruiter.R;
+import android.vinu.com.epoiserecruiter.activity.InviteOppDetailActivity;
 import android.vinu.com.epoiserecruiter.activity.OrganizationListActivity;
 import android.vinu.com.epoiserecruiter.helper.ItemClickListener;
 import android.vinu.com.epoiserecruiter.model.InviteOppList;
@@ -57,7 +58,7 @@ public class InviteListRecyclerViewAdapter extends RecyclerView.Adapter<InviteLi
 
                 InviteOppList selectedInviteOppList= getselectedInviteOppList(Position);
 
-                Intent intent=new Intent(mContext, OrganizationListActivity.class);
+                Intent intent=new Intent(mContext, InviteOppDetailActivity.class);
 
                 mContext.startActivity(intent);
 
