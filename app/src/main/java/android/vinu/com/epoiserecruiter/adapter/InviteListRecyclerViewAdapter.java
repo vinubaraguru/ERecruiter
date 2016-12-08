@@ -8,10 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.vinu.com.epoiserecruiter.R;
 import android.vinu.com.epoiserecruiter.activity.InviteOppDetailActivity;
-import android.vinu.com.epoiserecruiter.activity.OrganizationListActivity;
 import android.vinu.com.epoiserecruiter.helper.ItemClickListener;
 import android.vinu.com.epoiserecruiter.model.InviteOppList;
-import android.vinu.com.epoiserecruiter.model.OrganizationList;
 import android.widget.ImageView;
 import android.widget.TextView;
 
