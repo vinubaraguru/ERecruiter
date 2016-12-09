@@ -1,11 +1,13 @@
 package android.vinu.com.epoiserecruiter.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.vinu.com.epoiserecruiter.R;
+import android.vinu.com.epoiserecruiter.activity.AppliedCandidatesListActivity;
 import android.vinu.com.epoiserecruiter.helper.ItemClickListener;
 import android.vinu.com.epoiserecruiter.model.HiringOppList;
 import android.vinu.com.epoiserecruiter.model.InvitedCandidateList;
@@ -58,7 +60,10 @@ public class HiringOppListRecyclerViewAdapter extends RecyclerView.Adapter<Hirin
 
                 HiringOppList selectedHiringOppList= getSelectedHiringOppListArrayList(Position);
 
-                Toast.makeText(mContext,selectedHiringOppList.getOppTitle(),Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(mContext, AppliedCandidatesListActivity.class);
+                intent.putExtra("oppTitle",selectedHiringOppList.getOppTitle());
+
+                mContext.startActivity(intent);
             }
         });
     }
