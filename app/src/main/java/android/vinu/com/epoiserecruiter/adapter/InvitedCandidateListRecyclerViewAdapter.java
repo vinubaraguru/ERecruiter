@@ -13,6 +13,7 @@ import android.vinu.com.epoiserecruiter.model.InviteOppList;
 import android.vinu.com.epoiserecruiter.model.InvitedCandidateList;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -43,7 +44,7 @@ public class InvitedCandidateListRecyclerViewAdapter extends
     }
 
     @Override
-    public void onBindViewHolder(InvitedCandidateListRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(InvitedCandidateListRecyclerViewAdapter.ViewHolder holder, final int position) {
         InvitedCandidateList invitedCandidateList = mInvitedCandidateListArrayList.get(position);
 
         holder.invitedCandidateName.setText(invitedCandidateList.getCandidateName());
@@ -61,10 +62,7 @@ public class InvitedCandidateListRecyclerViewAdapter extends
 
                 InvitedCandidateList selectedInvitedCandidateList= getSelectedInvitedCandidateListArrayList(Position);
 
-                Intent intent=new Intent(mContext, InviteOppDetailActivity.class);
-
-                mContext.startActivity(intent);
-
+                Toast.makeText(mContext,invitedCandidateList.getCandidateName(),Toast.LENGTH_SHORT).show();
             }
         });
 

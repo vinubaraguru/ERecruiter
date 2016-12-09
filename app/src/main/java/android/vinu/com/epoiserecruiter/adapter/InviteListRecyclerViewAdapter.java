@@ -12,6 +12,7 @@ import android.vinu.com.epoiserecruiter.helper.ItemClickListener;
 import android.vinu.com.epoiserecruiter.model.InviteOppList;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -57,6 +58,7 @@ public class InviteListRecyclerViewAdapter extends RecyclerView.Adapter<InviteLi
                 InviteOppList selectedInviteOppList= getselectedInviteOppList(Position);
 
                 Intent intent=new Intent(mContext, InviteOppDetailActivity.class);
+                intent.putExtra("oppTitle",inviteOppList.getOppTitle());
 
                 mContext.startActivity(intent);
 

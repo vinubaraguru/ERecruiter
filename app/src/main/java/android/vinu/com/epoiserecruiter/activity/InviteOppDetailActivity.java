@@ -1,5 +1,6 @@
 package android.vinu.com.epoiserecruiter.activity;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -20,6 +21,8 @@ import android.view.ViewGroup;
 import android.vinu.com.epoiserecruiter.R;
 import android.vinu.com.epoiserecruiter.fragment.InviteListFragment;
 import android.vinu.com.epoiserecruiter.fragment.InvitedCandidateListFragment;
+import android.vinu.com.epoiserecruiter.fragment.RejectedCandidateListFragment;
+import android.vinu.com.epoiserecruiter.fragment.ShortlistedCandidateListFragment;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,8 +37,16 @@ public class InviteOppDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_opp_detail);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        String oppTitle= bundle.getString("oppTitle");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle(oppTitle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -76,15 +87,18 @@ public class InviteOppDetailActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
         adapter.addFragment(new InvitedCandidateListFragment(), "Invited");
-        adapter.addFragment(new InviteListFragment(), "Shortlisted");
-        adapter.addFragment(new InviteListFragment(), "Rejected");
+        adapter.addFragment(new ShortlistedCandidateListFragment(), "Shortlisted");
+        adapter.addFragment(new RejectedCandidateListFragment(), "Rejected");
         viewPager.setAdapter(adapter);
     }
 

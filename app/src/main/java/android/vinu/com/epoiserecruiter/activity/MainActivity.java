@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.vinu.com.epoiserecruiter.R;
 import android.vinu.com.epoiserecruiter.fragment.DashBoardFragment;
+import android.vinu.com.epoiserecruiter.fragment.HiringOppListFragment;
 import android.vinu.com.epoiserecruiter.fragment.InviteListFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -27,8 +28,15 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        String orgName= bundle.getString("orgName");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle(orgName);
 
 
         if (savedInstanceState == null) {
@@ -108,7 +116,7 @@ public class MainActivity extends AppCompatActivity
             title = getString(R.string.invites);
 
         } else if (id == R.id.nav_hiring) {
-            fragment = new DashBoardFragment();
+            fragment = new HiringOppListFragment();
             title = getString(R.string.hiring);
 
         } else if (id == R.id.nav_training) {

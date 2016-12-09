@@ -12,6 +12,7 @@ import android.vinu.com.epoiserecruiter.helper.ItemClickListener;
 import android.vinu.com.epoiserecruiter.model.OrganizationList;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -62,6 +63,10 @@ public class OrgListRecyclerViewAdapter extends RecyclerView.Adapter<OrgListRecy
                 OrganizationList selectedOrganization= getSelectedOrganization(Position);
 
                 Intent intent=new Intent(mContext, MainActivity.class);
+                intent.putExtra("orgName",selectedOrganization.getOrgName());
+
+                Toast.makeText(mContext,selectedOrganization.getOrgName(),Toast.LENGTH_SHORT).show();
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
 
