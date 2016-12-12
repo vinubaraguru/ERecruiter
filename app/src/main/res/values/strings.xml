@@ -61,5 +61,6 @@
     <string name="title_activity_invite_opp_detail">InviteOppDetailActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_applied_candidates_list">AppliedCandidatesListActivity</string>
+    <string name="title_activity_training_candidates_list">TrainingCandidatesListActivity</string>
 
 </resources>

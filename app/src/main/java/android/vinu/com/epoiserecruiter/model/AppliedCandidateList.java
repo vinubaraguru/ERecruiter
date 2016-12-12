@@ -6,13 +6,13 @@ import java.io.Serializable;
  * Created by ePoise on 12/9/2016.
  */
 
-public class HiringCandidateList implements Serializable {
+public class AppliedCandidateList implements Serializable {
 
     private String appliedCandidateName;
     private String appliedCandidateEmail;
     private String appliedCandidateImage;
 
-    public HiringCandidateList(String appliedCandidateName, String appliedCandidateEmail) {
+    public AppliedCandidateList(String appliedCandidateName, String appliedCandidateEmail) {
         this.appliedCandidateName = appliedCandidateName;
         this.appliedCandidateEmail = appliedCandidateEmail;
     }

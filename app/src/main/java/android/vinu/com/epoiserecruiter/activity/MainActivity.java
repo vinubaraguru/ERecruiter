@@ -20,6 +20,7 @@ import android.vinu.com.epoiserecruiter.R;
 import android.vinu.com.epoiserecruiter.fragment.DashBoardFragment;
 import android.vinu.com.epoiserecruiter.fragment.HiringOppListFragment;
 import android.vinu.com.epoiserecruiter.fragment.InviteListFragment;
+import android.vinu.com.epoiserecruiter.fragment.TrainingOppListFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity
             title = getString(R.string.hiring);
 
         } else if (id == R.id.nav_training) {
-            fragment = new DashBoardFragment();
+            fragment = new TrainingOppListFragment();
             title = getString(R.string.training);
 
         } else if (id == R.id.nav_my_organization) {
