@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.vinu.com.epoiserecruiter.R;
 import android.vinu.com.epoiserecruiter.fragment.AppliedCandidatesFragment;
-import android.vinu.com.epoiserecruiter.fragment.InvitedCandidateListFragment;
 import android.vinu.com.epoiserecruiter.fragment.RejectedCandidateListFragment;
 import android.vinu.com.epoiserecruiter.fragment.ShortlistedCandidateListFragment;
 
@@ -27,14 +26,14 @@ import java.util.List;
  * Created by ImVB9 on 12/9/2016.
  */
 
-public class AppliedCandidatesListActivity extends AppCompatActivity {
+public class HiringCandidatesListActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_applied_candidates_list);
+        setContentView(R.layout.activity_hiring_candidates_list);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
